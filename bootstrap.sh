@@ -16,12 +16,12 @@
 
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
-[ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim-3"
-[ -z "$REPO_URI" ] && REPO_URI='https://github.com/spf13/spf13-vim.git'
-[ -z "$REPO_BRANCH" ] && REPO_BRANCH='3.0'
+[ -z "$APP_PATH" ] && APP_PATH="$HOME/spf13-vim"
+[ -z "$REPO_URI" ] && REPO_URI='git@github.com:chenzhongjie/spf13-vim.git'
+[ -z "$REPO_BRANCH" ] && REPO_BRANCH='custom'
 debug_mode='0'
 fork_maintainer='0'
-[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/gmarik/vundle.git"
+[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/VundleVim/Vundle.vim.git"
 
 ############################  BASIC SETUP TOOLS
 msg() {
@@ -122,8 +122,11 @@ create_symlinks() {
     local target_path="$2"
 
     lnif "$source_path/.vimrc"         "$target_path/.vimrc"
-    lnif "$source_path/.vimrc.bundles" "$target_path/.vimrc.bundles"
     lnif "$source_path/.vimrc.before"  "$target_path/.vimrc.before"
+    lnif "$source_path/.vimrc.before.local"  "$target_path/.vimrc.before.local"
+    lnif "$source_path/.vimrc.bundles" "$target_path/.vimrc.bundles"
+    lnif "$source_path/.vimrc.bundles.local" "$target_path/.vimrc.bundles.local"
+    lnif "$source_path/.vimrc.local"   "$target_path/.vimrc.local"
     lnif "$source_path/.vim"           "$target_path/.vim"
 
     if program_exists "nvim"; then
@@ -164,8 +167,8 @@ setup_vundle() {
     vim \
         -u "$1" \
         "+set nomore" \
-        "+BundleInstall!" \
-        "+BundleClean" \
+        "+PluginInstall!" \
+        "+PluginClean" \
         "+qall"
 
     export SHELL="$system_shell"

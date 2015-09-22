@@ -81,7 +81,7 @@
 
 " General {
 
-    set background=dark         " Assume a dark background
+    set background=light        " Assume a light background
 
     " Allow to trigger background
     function! ToggleBG()
@@ -100,7 +100,7 @@
     " endif
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
-    set mouse=a                 " Automatically enable mouse usage
+    set mouse=v                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
 
@@ -207,7 +207,7 @@
         " Broken down into easily includeable segments
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
-        if !exists('g:override_spf13_bundles')
+        if !exists('g:override_spf13_bundles') && count(g:spf13_bundle_groups, 'programming')
             set statusline+=%{fugitive#statusline()} " Git Hotness
         endif
         set statusline+=\ [%{&ff}/%Y]            " Filetype
