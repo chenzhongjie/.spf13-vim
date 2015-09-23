@@ -68,14 +68,14 @@
 " }
 
 " Use before config if available {
-    if filereadable(expand("~/.vimrc.before"))
-        source ~/.vimrc.before
+    if filereadable(expand("~/.spf13-vim/.vimrc.before"))
+        source ~/.spf13-vim/.vimrc.before
     endif
 " }
 
 " Use bundles config {
-    if filereadable(expand("~/.vimrc.bundles"))
-        source ~/.vimrc.bundles
+    if filereadable(expand("~/.spf13-vim/.vimrc.bundles"))
+        source ~/.spf13-vim/.vimrc.bundles
     endif
 " }
 

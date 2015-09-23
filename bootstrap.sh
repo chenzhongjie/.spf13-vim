@@ -16,8 +16,8 @@
 
 ############################  SETUP PARAMETERS
 app_name='spf13-vim'
-[ -z "$APP_PATH" ] && APP_PATH="$HOME/spf13-vim"
-[ -z "$REPO_URI" ] && REPO_URI='git@github.com:chenzhongjie/spf13-vim.git'
+[ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim"
+[ -z "$REPO_URI" ] && REPO_URI='git@github.com:chenzhongjie/.spf13-vim.git'
 [ -z "$REPO_BRANCH" ] && REPO_BRANCH='custom'
 debug_mode='0'
 fork_maintainer='0'
@@ -122,9 +122,7 @@ create_symlinks() {
     local target_path="$2"
 
     lnif "$source_path/.vimrc"         "$target_path/.vimrc"
-    lnif "$source_path/.vimrc.before"  "$target_path/.vimrc.before"
     lnif "$source_path/.vimrc.before.local"  "$target_path/.vimrc.before.local"
-    lnif "$source_path/.vimrc.bundles" "$target_path/.vimrc.bundles"
     lnif "$source_path/.vimrc.bundles.local" "$target_path/.vimrc.bundles.local"
     lnif "$source_path/.vimrc.local"   "$target_path/.vimrc.local"
     lnif "$source_path/.vim"           "$target_path/.vim"
